@@ -1,0 +1,13 @@
+﻿using EntityLayer.Concrete;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace DataAccessLayer.Abstract
+{
+    public interface IJobDal : IGenericDal<Job>
+    {
+        // Job sınıfına ait yapılacak olan işlemlerin imzasını yaptık.
+        // IGenericDal içerisindeki methodlar kullanıldı.
+    }
+}

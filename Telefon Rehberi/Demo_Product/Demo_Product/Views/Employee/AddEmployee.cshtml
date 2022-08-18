@@ -1,0 +1,39 @@
+﻿@model EntityLayer.Concrete.Employee
+@{
+    ViewData["Title"] = "AddEmployee";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+<style>
+    body {
+        /*background-image: url('');*/
+        background: linear-gradient(0deg, rgba(255,255,255, 0.6), rgba(77, 196, 196, 0.6)), url(https://seeklogo.com/images/D/devlet_su_isleri-logo-1DE3FB1F15-seeklogo.com.png);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: auto;
+        background-position: center;
+        background-color: transparent;
+    }
+</style>
+
+<form method="post">
+    @Html.Label("Kişi Adı")
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Name)
+    <br />
+    @Html.Label("Kişi Şehri")
+    @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.City)
+    <br />
+    @Html.Label("Departman Seçiniz")
+    @Html.DropDownListFor(x=>x.JobID, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Telefon Numarası Giriniz")
+    @Html.TextBoxFor(x=> x.PhoneNo, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.PhoneNo)
+
+    <br />
+    <button class="btn btn-primary">Yeni Kişi Ekle</button>
+</form>
+
+

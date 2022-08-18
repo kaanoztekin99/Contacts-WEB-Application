@@ -1,0 +1,31 @@
+﻿@model EntityLayer.Concrete.Employee
+@{
+    ViewData["Title"] = "UpdateEmployee";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+<form method="post">
+    @Html.Label("Kişi ID")
+    @Html.TextBoxFor(x => x.Id, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Kişi Adı")
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Kişi Şehri")
+    @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Departman Seçiniz")
+    @Html.DropDownListFor(x => x.JobID, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Telefon Numarası")
+    @Html.TextBoxFor(x => x.PhoneNo,new { @class = "form-control"})
+    <br />
+
+    <button class="btn btn-info">Kişi Güncelle</button>
+
+</form>
+

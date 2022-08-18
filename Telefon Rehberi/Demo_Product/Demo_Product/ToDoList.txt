@@ -1,0 +1,12 @@
+﻿* Arama İşlemi
+* Yardım Pop Up 
+* Üyelik İşlemi
+* Identity 
+* Footer
+* Ayarlar
+* Çıkış İşlemi
+* Giriş İşlemi
+* Yeni Üye İşlemi
+* Admin İşlemi
+* Publish
+* Projeyi ayağa kaldırma

@@ -1,0 +1,84 @@
+﻿@using EntityLayer.Concrete
+@model List<Employee>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+<h1> Kişiler </h1>
+<br />
+<div class="p-2" id="listEmployee"></div>
+
+<style>
+    body {
+        /*background-image: url('');*/
+        background: linear-gradient(0deg, rgba(255,255,255, 0.6), rgba(77, 196, 196, 0.6)), url(https://seeklogo.com/images/D/devlet_su_isleri-logo-1DE3FB1F15-seeklogo.com.png);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: auto;
+        background-position: center;
+        background-color: transparent;
+    }
+</style>
+
+<br />
+
+<table class=" table table-bordered">
+    <tr>
+        <th># </th>
+        <th>Kişi Adı </th>
+        <th>Şehir </th>
+        <th>Departman</th>
+        <th>Telefon Numarası</th>
+        <th>Sil </th>
+        <th>Güncelle </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.City</td>
+            <td>@item.Job.Name</td>
+            <td>@item.PhoneNo</td>
+            <td> <a href="/Employee/DeleteEmployee/@item.Id" class="btn btn-outline-danger">Sil</a></td>
+            <td> <a href="/Employee/UpdateEmployee/@item.Id" class="btn btn-outline-primary">Güncelle</a></td>
+        </tr>
+    }
+</table>
+<a href="/Employee/AddEmployee/" class="btn btn-outline-primary">Yeni Kişi Ekle</a>
+
+<br />
+
+@section scripts
+{
+    <script>
+
+        $("#btnNavbarSearch").click(x => {
+            let id = $("#search").val();
+
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "Get",
+                url: "/Customer/GetById/",
+                data: { Id: id },
+                success: function (funk2) {
+                    let result = jQuery.parseJSON(funk2);
+                    console.log(funk2);
+                    let htmlstr = `<table class=table table-bordered> <tr> <th>ID</th> <td>
+                            ${result.Id}</td></tr> <tr> <th>Kişi adı</th> <td>${result.Name}</td> </tr> <tr> <th>Şehir</th> <td>${result.City}</td> </tr> <tr> <th>Telefon Numarası></th> <td>${result.PhoneNo}</td> </tr></table>`;
+                    $("#listEmployee").html(htmlstr);
+                },
+                error: function (response) {
+                   console.log(response);
+                }
+            });
+
+        });
+    </script>
+
+}
+<script src="~/lib/jquery/dist/jquery.js"></script>
